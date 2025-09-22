@@ -1,0 +1,2350 @@
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #f5e6d3 0%, #f0d5b8 50%, #ead0a8 100%);
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.nav {
+    display: flex;
+    gap: 2rem;
+    margin-left: auto;
+}
+
+.logo a {
+    display: block;
+    text-decoration: none;
+}
+
+.logo-image {
+    height: 60px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+}
+
+.welcome-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.welcome-text {
+    font-size: 0.9rem;
+    color: #a8d8ea;
+    font-weight: 400;
+}
+
+.user-name {
+    font-size: 1rem;
+    color: #4ecdc4;
+    font-weight: 600;
+}
+
+.nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+/* Main content */
+.main {
+    min-height: calc(100vh - 140px);
+    padding: 2rem 0;
+    margin-top: 80px; /* Espacio para el header fijo */
+}
+
+/* Título de página */
+.page-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-top: 60px; /* Compensar header fijo - reducido */
+    background: transparent !important; /* Forzar fondo transparente */
+    position: relative;
+    z-index: 1;
+}
+
+.page-title h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.page-title hr {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    margin: 0 auto;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.breadcrumb .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #6c757d;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.breadcrumb .btn:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Grid de álbumes */
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.album-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.album-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.album-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.album-card:hover .album-image {
+    transform: scale(1.05);
+}
+
+.album-content {
+    padding: 1.5rem;
+}
+
+.album-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.album-subtitle {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+}
+
+.album-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.album-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Video overlay para álbumes con video */
+.video-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+.video-icon {
+    display: inline-flex;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-decoration: none;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.video-icon:hover {
+    background: rgba(255, 0, 0, 0.9);
+    transform: scale(1.1);
+    color: white;
+    text-decoration: none;
+}
+
+/* Sección de años */
+.years-section {
+    margin-bottom: 4rem;
+}
+
+.years-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.year-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.year-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.year-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.year-content {
+    padding: 1rem;
+}
+
+.year-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.year-subtitle {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+/* Formularios */
+.form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-success {
+    background: #28a745;
+    color: white;
+}
+
+/* Tabla de administración */
+.admin-table {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.admin-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e1e8ed;
+}
+
+.admin-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.admin-table tr:hover {
+    background: #f8f9fa;
+}
+
+/* Estadísticas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* Botones de scroll rápido */
+.scroll-buttons {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.scroll-btn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+.scroll-btn:active {
+    transform: scale(0.95);
+}
+
+.scroll-btn span {
+    display: block;
+    line-height: 1;
+}
+
+/* Footer */
+.footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+/* Placeholder - Media queries moved to end */
+
+/* Loading spinner */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Alertas */
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* ==================== ESTILOS PARA PRESENTACIONES ==================== */
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.presentations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.presentation-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.presentation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.presentation-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.presentation-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.presentation-card:hover .presentation-image {
+    transform: scale(1.05);
+}
+
+.presentation-content {
+    padding: 1.5rem;
+}
+
+.presentation-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.presentation-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Modales */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 0;
+    border: none;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s ease;
+    /* Ocultar barra de scroll pero mantener funcionalidad */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer y Edge */
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title-section h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.modal-title-section p {
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-help {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.readonly-field {
+    background-color: #f8f9fa;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.readonly-field-small {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.checkbox-label input[type="checkbox"] {
+    margin-right: 0.5rem;
+    width: auto;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #f0f0f0;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos unificados para imágenes de fotos y videos */
+.family-item img,
+.contenedorArayEvol-grid img,
+.year-image,
+.special-image,
+.album-image,
+.presentation-image,
+.item-image {
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Ajustes específicos para imágenes familiares (mantener circular) */
+.family-item img,
+.contenedorArayEvol-grid img {
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+}
+
+/* Contenedores de imágenes con tamaño fijo */
+.year-image-container,
+.special-image-container,
+.album-image-container,
+.item-image-container {
+    height: 250px !important;
+    overflow: hidden !important;
+    border-radius: 12px !important;
+}
+
+/* Responsive */
+/* Media queries unificadas al final del archivo */
+
+/* Estilos de la página principal */
+.admin-link {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.main-sections {
+    margin-bottom: 1rem;
+}
+
+.sections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.section-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border: 3px solid #667eea;
+}
+
+.section-card:focus {
+    outline: 4px solid #667eea;
+    outline-offset: 3px;
+}
+
+.section-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.section-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.section-card:hover .section-image {
+    transform: scale(1.08);
+}
+
+.section-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.section-description {
+    font-size: 1rem;
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Sección de imágenes familiares */
+.family-images-section {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    padding: 1rem 0;
+    background: #000;
+    border-radius: 20px;
+}
+
+.imagenes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.imagenes img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imagenes img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Menú de navegación del admin */
+.admin-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.admin-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    min-width: 120px;
+    text-align: center;
+}
+
+.admin-nav-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border: 2px solid #667eea;
+}
+
+.admin-nav-item.active {
+    background: #667eea;
+    color: white;
+}
+
+.nav-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.nav-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Estilos de Montajes & Tips */
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.admin-header h1 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.admin-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.presentations-table {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.presentations-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.presentations-table th {
+    background: #f8f9fa;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.presentations-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: middle;
+}
+
+.presentations-table tr:hover {
+    background: #f8f9fa;
+}
+
+.admin-table .presentation-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.presentation-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.presentation-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+
+.presentation-subtitle {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.no-presentations {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.no-presentations h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.no-presentations p {
+    color: #7f8c8d;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    color: #5a6fd8;
+}
+
+.readonly-field {
+    background: #f8f9fa;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Estilos de Aray Years */
+.table-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-badge.active {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-badge.inactive {
+    background-color: #6c757d;
+    color: white;
+}
+
+.status-badge.intermediate {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.status-badge.final {
+    background-color: #28a745;
+    color: white;
+}
+
+.filters-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: end;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.readonly-field-small {
+    width: 100px;
+    font-size: 0.875rem;
+    padding: 0.5rem;
+}
+
+/* Estilos de Aray Trimestres */
+.tipo-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tipo-google {
+    background-color: #4285f4;
+    color: white;
+}
+
+.tipo-amazon {
+    background-color: #ff9900;
+    color: white;
+}
+
+.tipo-albums {
+    background-color: #6c757d;
+    color: white;
+}
+
+.links-cell {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.link-btn {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.fotos-link {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.fotos-link:hover {
+    background-color: #dee2e6;
+}
+
+.video-link {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.video-link:hover {
+    background-color: #bee5eb;
+}
+
+/* Bloquear scroll cuando modal está abierto */
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* ==================== MEDIA QUERIES - RESPONSIVE ==================== */
+
+
+   
+/* Móvil pequeño */
+@media (max-width: 480px) {
+    .header {
+        padding: 0.3rem 0;
+    }
+    
+    .header .container {
+        gap: 0.3rem;
+        padding: 0 5px;
+    }
+    
+    .logo-image {
+        height: 35px;
+        max-width: 100px;
+    }
+    
+    .welcome-text,
+    .user-name {
+        font-size: 0.7rem;
+    }
+    
+    .nav {
+        gap: 0.3rem;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .nav-link {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.75rem;
+    }
+    
+    .main {
+        margin-top: 80px;
+    }
+    
+    .page-title h1 {
+        font-size: 1.5rem;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    /* Página principal móvil pequeño */
+    .sections-grid {
+        gap: 1rem;
+    }
+    
+    .section-image-container {
+        height: 160px;
+    }
+    
+    .section-content {
+        padding: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.1rem;
+    }
+    
+    .section-description {
+        font-size: 0.85rem;
+    }
+    
+    /* Imágenes familiares móvil pequeño */
+    .imagenes {
+        gap: 0.5rem;
+    }
+    
+    .imagenes img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Admin presentation items - Desktop */
+.admin-table .item-image {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+}
+
+/* Galería de archivos Alessandro */
+.files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.file-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.file-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.file-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.file-item video {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.file-checkbox {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 2;
+}
+
+.file-actions {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 2;
+}
+
+.file-action-btn {
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-action-btn:hover {
+    background: rgba(0,0,0,0.9);
+    transform: scale(1.1);
+}
+
+.file-info {
+    text-align: center;
+}
+
+.file-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-type {
+    font-size: 0.7rem;
+    color: #7f8c8d;
+}
+
+/* Admin albums - Desktop y Móvil */
+.album-thumbnail .thumbnail {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+}
+
+/* Admin montajes (presentations) - Desktop y Móvil */
+.presentations-table .presentation-image {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+}
+
+/* Admin aray years - Desktop y Móvil */
+.table-image {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+}
+
+/* Campo readonly para emails en edición de usuarios */
+input[readonly] {
+    background-color: #f8f9fa !important;
+    cursor: not-allowed !important;
+}
+
+/* Vista previa de imagen en modales */
+.image-preview-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 0.5rem;
+    min-height: 80px;
+}
+
+.image-preview {
+    max-width: 70px;
+    max-height: 70px;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Campos en línea para formulario de items */
+.form-fields-inline {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-fields-inline .form-group {
+    flex: 1;
+}
+
+/* Estilos específicos de Aray */
+.aray-section {
+    background: #000;
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.aray-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.aray-year-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.aray-year-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.aray-year-image {
+    flex-shrink: 0;
+}
+
+.aray-year-image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.aray-year-image img:hover {
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+    border-color: #667eea;
+}
+
+.aray-year-info {
+    flex: 1;
+}
+
+.aray-year-info h3 {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.aray-trimestres {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.trimestre-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.trimestre-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    min-width: 140px;
+    text-align: center;
+}
+
+.trimestre-btn:hover {
+    background: #5a67d8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.trimestre-fotos {
+    background: #667eea;
+}
+
+.trimestre-fotos:hover {
+    background: #5a67d8;
+}
+
+.trimestre-amazon {
+    background: #667eea;
+    color: white;
+}
+
+.trimestre-amazon:hover {
+    background: #5a67d8;
+}
+
+.video-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.video-btn:hover {
+    background: #c82333;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* Estilos específicos de Fotos y Videos Index */
+.family-section {
+    margin-bottom: 3rem;
+}
+
+.family-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.family-item,
+.contenedorArayEvol-grid {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.family-item a,
+.contenedorArayEvol-grid a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.family-item h3,
+.contenedorArayEvol-grid h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.separator-line {
+    height: 4px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
+    margin: 3rem 0;
+    width: 100%;
+}
+
+/* Estilos específicos de Intermediate page */
+.page-subtitle {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+/* Estilos específicos de Year page */
+.no-albums {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.no-albums h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.no-albums p {
+    color: #7f8c8d;
+}
+
+.no-albums a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.no-albums a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos específicos de Cumpleaños */
+.contenedorFotosVideos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contenedorRestoAños-grid {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.contenedorRestoAños-grid:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    border: 2px solid #667eea;
+}
+
+.contenedorRestoAños-grid a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.contenedorRestoAños-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.contenedorRestoAños-grid:hover img {
+    transform: scale(1.05);
+}
+
+.contenedorRestoAños-grid h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 1rem 0;
+    padding: 0 1rem;
+}
+
+/* ==================== RESPONSIVE UNIFICADO ==================== */
+
+/* Móvil y tablet (767px y menos) */
+@media (max-width: 767px) {
+    /* Presentaciones y grids */
+    .presentations-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    
+    /* Header responsive */
+    .header {
+        padding: 0.5rem 0;
+    }
+    
+    .header .container {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0 10px;
+    }
+    
+    .logo-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+    }
+    
+    .logo-image {
+        height: 40px;
+        max-width: 120px;
+    }
+    
+    .welcome-message {
+        align-items: center;
+        flex-direction: row;
+        gap: 0.3rem;
+    }
+    
+    .welcome-text,
+    .user-name {
+        font-size: 0.8rem;
+    }
+    
+    .nav {
+        gap: 0.3rem;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+    
+    .nav-link {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    
+    /* Main content */
+    .main {
+        margin-top: 100px;
+        padding: 1rem 0;
+    }
+    
+    .page-title {
+        padding-top: 20px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .page-title h1 {
+        font-size: 1.8rem;
+    }
+    
+    /* Grids responsive */
+    .albums-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .years-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    /* Modales */
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    /* Forms responsive */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+        grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    /* Admin responsive */
+    .admin-container {
+        padding: 1rem;
+    }
+    
+    .admin-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filters-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .filter-group {
+        min-width: 100%;
+    }
+    
+    .items-table {
+        overflow-x: auto;
+    }
+    
+    /* Responsive para imágenes de fotos y videos */
+    .year-image,
+    .special-image,
+    .album-image,
+    .presentation-image,
+    .item-image {
+        height: 200px !important;
+    }
+    
+    .year-image-container,
+    .special-image-container,
+    .album-image-container,
+    .item-image-container {
+        height: 200px !important;
+    }
+    
+    .family-item img,
+    .contenedorArayEvol-grid img {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    /* Formato de tarjetas SOLO para Álbumes en móvil */
+    #albums-section .admin-table thead {
+        display: none;
+    }
+    
+    #albums-section .admin-table,
+    #albums-section .admin-table tbody,
+    #albums-section .admin-table tr,
+    #albums-section .admin-table td {
+        display: block;
+    }
+    
+    #albums-section .admin-table tr {
+        background: white;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border: 1px solid #e1e8ed;
+    }
+    
+    #albums-section .admin-table td {
+        border: none;
+        padding: 0.4rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    #albums-section .admin-table td:before {
+        content: "";
+        font-weight: bold;
+        color: #667eea;
+        font-size: 0.8rem;
+        min-width: 80px;
+        flex-shrink: 0;
+    }
+    
+    #albums-section .admin-table tr td:nth-child(1):before { content: "ID:"; }
+    #albums-section .admin-table tr td:nth-child(2):before { content: "Imagen:"; }
+    #albums-section .admin-table tr td:nth-child(3):before { content: "Título:"; }
+    #albums-section .admin-table tr td:nth-child(4):before { content: "Año:"; }
+    #albums-section .admin-table tr td:nth-child(5):before { content: "Orden:"; }
+    #albums-section .admin-table tr td:nth-child(6):before { content: "Tipo:"; }
+    #albums-section .admin-table tr td:nth-child(7):before { content: "Intermedia:"; }
+    #albums-section .admin-table tr td:nth-child(8):before { content: "Categoría:"; }
+    #albums-section .admin-table tr td:nth-child(9):before { content: "Estado:"; }
+    #albums-section .admin-table tr td:nth-child(10):before { content: "Acciones:"; }
+    
+    #albums-section .admin-table .actions {
+        justify-content: flex-end;
+        gap: 0.3rem;
+    }
+    
+    /* Formato de tarjetas para otras secciones */
+    .presentations-table thead,
+    #years-table thead,
+    #trimestres-table thead,
+    #users-section .admin-table thead,
+    #homepage-elements-section .admin-table thead {
+        display: none;
+    }
+    
+    .presentations-table table,
+    .presentations-table tbody,
+    .presentations-table tr,
+    .presentations-table td,
+    #years-table,
+    #years-table tbody,
+    #years-table tr,
+    #years-table td,
+    #trimestres-table,
+    #trimestres-table tbody,
+    #trimestres-table tr,
+    #trimestres-table td,
+    #users-section .admin-table,
+    #users-section .admin-table tbody,
+    #users-section .admin-table tr,
+    #users-section .admin-table td,
+    #homepage-elements-section .admin-table,
+    #homepage-elements-section .admin-table tbody,
+    #homepage-elements-section .admin-table tr,
+    #homepage-elements-section .admin-table td {
+        display: block;
+    }
+    
+    .presentations-table tr,
+    #years-table tr,
+    #trimestres-table tr,
+    #users-section .admin-table tr,
+    #homepage-elements-section .admin-table tr {
+        background: white;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border: 1px solid #e1e8ed;
+    }
+    
+    .presentations-table td,
+    #years-table td,
+    #trimestres-table td,
+    #users-section .admin-table td,
+    #homepage-elements-section .admin-table td {
+        border: none;
+        padding: 0.4rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    /* Labels para cada sección */
+    .presentations-table td:before,
+    #years-table td:before,
+    #trimestres-table td:before,
+    #users-section .admin-table td:before,
+    #homepage-elements-section .admin-table td:before {
+        content: "";
+        font-weight: bold;
+        color: #667eea;
+        font-size: 0.8rem;
+        min-width: 80px;
+        flex-shrink: 0;
+    }
+    
+    /* Labels específicos para cada tabla */
+    .presentations-table tr td:nth-child(1):before { content: "ID:"; }
+    .presentations-table tr td:nth-child(2):before { content: "Imagen:"; }
+    .presentations-table tr td:nth-child(3):before { content: "Título:"; }
+    .presentations-table tr td:nth-child(4):before { content: "Subtítulo:"; }
+    .presentations-table tr td:nth-child(5):before { content: "Orden:"; }
+    .presentations-table tr td:nth-child(6):before { content: "Estado:"; }
+    .presentations-table tr td:nth-child(7):before { content: "Acciones:"; }
+    
+    #years-table tr td:nth-child(1):before { content: "ID:"; }
+    #years-table tr td:nth-child(2):before { content: "Año:"; }
+    #years-table tr td:nth-child(3):before { content: "Imagen:"; }
+    #years-table tr td:nth-child(4):before { content: "Intermedia:"; }
+    #years-table tr td:nth-child(5):before { content: "Orden:"; }
+    #years-table tr td:nth-child(6):before { content: "Estado:"; }
+    #years-table tr td:nth-child(7):before { content: "Fecha:"; }
+    #years-table tr td:nth-child(8):before { content: "Acciones:"; }
+    
+    #trimestres-table tr td:nth-child(1):before { content: "ID:"; }
+    #trimestres-table tr td:nth-child(2):before { content: "Año:"; }
+    #trimestres-table tr td:nth-child(3):before { content: "Trimestre:"; }
+    #trimestres-table tr td:nth-child(4):before { content: "Título:"; }
+    #trimestres-table tr td:nth-child(5):before { content: "Tipo:"; }
+    #trimestres-table tr td:nth-child(6):before { content: "Enlaces:"; }
+    #trimestres-table tr td:nth-child(7):before { content: "Orden:"; }
+    #trimestres-table tr td:nth-child(8):before { content: "Estado:"; }
+    #trimestres-table tr td:nth-child(9):before { content: "Acciones:"; }
+    
+    #users-section .admin-table tr td:nth-child(1):before { content: "ID:"; }
+    #users-section .admin-table tr td:nth-child(2):before { content: "Nombre:"; }
+    #users-section .admin-table tr td:nth-child(3):before { content: "Email:"; }
+    #users-section .admin-table tr td:nth-child(4):before { content: "Perfil:"; }
+    #users-section .admin-table tr td:nth-child(5):before { content: "Sexo:"; }
+    #users-section .admin-table tr td:nth-child(6):before { content: "Estado:"; }
+    #users-section .admin-table tr td:nth-child(7):before { content: "Acciones:"; }
+    
+    #homepage-elements-section .admin-table tr td:nth-child(1):before { content: "ID:"; }
+    #homepage-elements-section .admin-table tr td:nth-child(2):before { content: "Imagen:"; }
+    #homepage-elements-section .admin-table tr td:nth-child(3):before { content: "Título:"; }
+    #homepage-elements-section .admin-table tr td:nth-child(4):before { content: "Descripción:"; }
+    #homepage-elements-section .admin-table tr td:nth-child(5):before { content: "Enlace:"; }
+    #homepage-elements-section .admin-table tr td:nth-child(6):before { content: "Orden:"; }
+    #homepage-elements-section .admin-table tr td:nth-child(7):before { content: "Estado:"; }
+    #homepage-elements-section .admin-table tr td:nth-child(8):before { content: "Acciones:"; }
+    
+    /* Formato de tarjetas para Items - SOLO MÓVIL */
+    .items-table thead { display: none; }
+    .items-table table, .items-table tbody, .items-table tr, .items-table td { display: block; }
+    .items-table tr {
+        background: white;
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border: 1px solid #e0e0e0;
+    }
+    .items-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.3rem 0;
+        border: none;
+    }
+    .items-table td:before {
+        content: "";
+        font-weight: bold;
+        color: #667eea;
+        font-size: 0.8rem;
+        min-width: 100px;
+        flex-shrink: 0;
+    }
+    
+    /* Labels específicos para Items */
+    .items-table tr td:nth-child(1):before { content: "ID:"; }
+    .items-table tr td:nth-child(2):before { content: "Imagen:"; }
+    .items-table tr td:nth-child(3):before { content: "Título:"; }
+    .items-table tr td:nth-child(4):before { content: "Subtítulo:"; }
+    .items-table tr td:nth-child(5):before { content: "Presentación:"; }
+    .items-table tr td:nth-child(6):before { content: "Enlace:"; }
+    .items-table tr td:nth-child(7):before { content: "Padre ID:"; }
+    .items-table tr td:nth-child(8):before { content: "Orden:"; }
+    .items-table tr td:nth-child(9):before { content: "Estado:"; }
+    .items-table tr td:nth-child(10):before { content: "Acciones:"; }
+    
+    /* Imagen cuadrada en móvil para items */
+    .items-table .item-image {
+        width: 50px !important;
+        height: 50px !important;
+        object-fit: cover !important;
+        border-radius: 8px !important;
+    }
+    
+    /* Admin albums - Móvil más pequeña */
+    .album-thumbnail .thumbnail {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    /* Admin montajes (presentations) - Móvil aún más pequeña */
+    .presentations-table .presentation-image {
+        width: 40px !important;
+        height: 40px !important;
+    }
+    
+    /* Admin aray years - Móvil */
+    .table-image {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    /* Título de Administración de Años de Aray más pequeño en móvil */
+    .admin-header h1 {
+        font-size: 1.3rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    /* Aray responsive - móvil */
+    .aray-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        padding: 0 1rem;
+    }
+    
+    .aray-year-item {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 1.5rem !important;
+    }
+    
+    .aray-year-image img {
+        width: 100px !important;
+        height: 100px !important;
+    }
+    
+    .aray-year-info h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    .aray-trimestres {
+        align-items: center;
+    }
+    
+    .trimestre-item {
+        justify-content: center;
+    }
+    
+    .trimestre-btn {
+        min-width: 120px !important;
+        padding: 0.6rem 1.2rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    /* Cumpleaños responsive - móvil */
+    .contenedorFotosVideos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+        gap: 1.5rem !important;
+    }
+    
+    .contenedorRestoAños-grid img {
+        height: 150px !important;
+    }
+    
+    .contenedorRestoAños-grid h1 {
+        font-size: 1rem !important;
+    }
+    
+    /* Files grid responsive - móvil */
+    .files-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+        gap: 0.8rem !important;
+    }
+    
+    .file-item {
+        padding: 0.8rem !important;
+    }
+    
+    .file-item img,
+    .file-item video {
+        height: 100px !important;
+    }
+    
+    /* Family section responsive - móvil */
+    .family-grid {
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 1.5rem !important;
+        justify-items: center;
+    }
+    
+    .family-grid .family-item:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    .family-grid .contenedorArayEvol-grid:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    
+    .family-grid .family-item:nth-child(3) {
+        grid-column: 1 / 3;
+        grid-row: 2;
+        justify-self: center;
+    }
+    
+    /* Admin nav responsive - móvil (3 columnas) */
+    .admin-nav {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.8rem !important;
+    }
+    
+    .admin-nav-item {
+        min-width: auto !important;
+        padding: 0.8rem 0.5rem !important;
+    }
+    
+    .nav-icon {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+    
+    .nav-text {
+        font-size: 0.7rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    /* Reducir espaciado entre títulos SOLO EN MÓVIL */
+    .admin-header {
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .admin-section {
+        margin-top: 0 !important;
+    }
+    
+    .section-header h2 {
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Estilos de la página principal */
+    .sections-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 400px;
+    }
+    
+    .section-image-container {
+        height: 180px;
+    }
+    
+    .section-content {
+        padding: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+    }
+    
+    .section-description {
+        font-size: 0.9rem;
+    }
+}

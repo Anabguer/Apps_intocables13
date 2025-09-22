@@ -1,0 +1,44 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos temporales
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Archivos de configuración local (si los hubiera)
+config.local.php
+database.local.php
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de backup
+*.bak
+*.backup
+*~
+
+# Carpetas de cache
+cache/
+temp/
+logs/
+
+# Archivos específicos que no deben versionarse
+verificar-produccion.php
+
+# Node modules (si se usan en el futuro)
+node_modules/
+
+# DIRECTORIO DE IMÁGENES - IGNORAR COMPLETAMENTE
+img/
+
+# Archivos de imagen muy grandes (opcional)
+# *.mp4
+# *.avi
+# *.mov
