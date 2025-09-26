@@ -11,8 +11,27 @@ $currentUser = getCurrentUser();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo isset($pageTitle) ? $pageTitle : 'Intocables - Fotos y Videos'; ?></title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Plataforma familiar para compartir fotos, videos, montajes y recetas">
+    <meta name="theme-color" content="#8b5cf6">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Intocables">
+    <meta name="msapplication-TileColor" content="#1a2332">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
+    <!-- Icons and Manifest -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/icon-512x512.png">
+    <link rel="manifest" href="/manifest.json">
+    
     <link rel="stylesheet" href="<?php echo CSS_URL; ?>styles.css?v=<?php echo filemtime(__DIR__ . '/../css/styles.css'); ?>">
-    <link rel="icon" type="image/x-icon" href="<?php echo IMG_URL; ?>favicon.ico">
     
     <!-- Variables globales para JavaScript -->
     <script>

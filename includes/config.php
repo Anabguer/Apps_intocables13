@@ -1,4 +1,8 @@
 <?php
+// ==================== CONFIGURACIÓN DE RUTAS ====================
+// Incluir configuración de rutas
+require_once __DIR__ . '/paths.php';
+
 // ==================== CONFIGURACIÓN DE BASE DE DATOS ====================
 // Incluir configuración de base de datos (NO MODIFICABLE DESDE ADMIN)
 require_once __DIR__ . '/database.php';

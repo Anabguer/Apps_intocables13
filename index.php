@@ -12,18 +12,19 @@ $pageTitle = 'Intocables - Fotos, Videos, Montajes y Recetas';
 include 'includes/header.php';
 ?>
 
-<div class="page-title">
-    <h1><?php echo htmlspecialchars(SITE_NAME); ?></h1>
-    <hr>
-    <?php 
-    $currentUser = getCurrentUser();
-    if (isAdmin() || ($currentUser && $currentUser['perfil'] === 'edit')): 
-    ?>
-    <div class="admin-link">
-        <a href="admin/" class="btn btn-secondary">⚙️ Administración</a>
-    </div>
-    <?php endif; ?>
-</div>
+        <div class="page-title">
+            <div class="site-logo">
+                <img src="/img/LogosBanners/logo_pagina_inicio.png" alt="<?php echo htmlspecialchars(SITE_NAME); ?>" class="logo-homepage">
+            </div>
+            <?php 
+            $currentUser = getCurrentUser();
+            if (isAdmin() || ($currentUser && $currentUser['perfil'] === 'edit')): 
+            ?>
+            <div class="admin-link">
+                <a href="admin/" class="btn btn-secondary">⚙️ Administración</a>
+            </div>
+            <?php endif; ?>
+        </div>
 
 <div class="container">
     <!-- Sección principal con enlaces a las diferentes áreas -->
@@ -52,19 +53,6 @@ include 'includes/header.php';
                 </div>
             </a>
             <?php endforeach; ?>
-
-        </div>
-    </div>
-    
-    <!-- Sección de imágenes familiares -->
-    <div class="family-images-section">
-        <div class="imagenes">
-            <img src="<?php echo getImagePath('/img/LogosBanners/Logo2conTituloIzquierdo.png'); ?>" id="portadaLogoIzquierdo" alt="">
-            <img src="<?php echo getImagePath('/img/botones/portada_papas.png'); ?>" id="portadaPapas" alt="">
-            <img src="<?php echo getImagePath('/img/botones/portada_jessi.png'); ?>" id="portadaJessi" alt="">
-            <img src="<?php echo getImagePath('/img/botones/portada_aray.png'); ?>" id="portadaAray" alt="">
-            <img src="<?php echo getImagePath('/img/botones/portada_anabel.png'); ?>" id="portadaAnabel" alt="">
-            <img src="<?php echo getImagePath('/img/LogosBanners/Logo2conTituloDerecho.png'); ?>" id="portadaLogoDerecho" alt="">
         </div>
     </div>
 </div>
