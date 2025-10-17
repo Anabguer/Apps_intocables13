@@ -14,6 +14,31 @@ include '../includes/header.php';
 <script src="<?php echo JS_URL; ?>admin-users.js?v=<?php echo time(); ?>" defer></script>
 <script src="<?php echo JS_URL; ?>admin-homepage.js?v=<?php echo time(); ?>" defer></script>
 
+<script>
+// Asegurar que solo se muestre la sección de álbumes al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    // Ocultar todas las secciones de administración
+    document.querySelectorAll('.admin-section').forEach(sec => {
+        if (sec.id !== 'albums-section') {
+            sec.style.display = 'none';
+        }
+    });
+    
+    // Asegurar que la sección de álbumes esté visible
+    const albumsSection = document.getElementById('albums-section');
+    if (albumsSection) {
+        albumsSection.style.display = 'block';
+    }
+    
+    // Marcar el icono de álbumes como activo
+    const albumsNavItem = document.querySelector('[data-section="albums"]');
+    if (albumsNavItem) {
+        document.querySelectorAll('.admin-nav-item').forEach(nav => nav.classList.remove('active'));
+        albumsNavItem.classList.add('active');
+    }
+});
+</script>
+
 <?php
 
 // Obtener estadísticas
@@ -488,7 +513,7 @@ $albums = getAllAlbums(['activo' => 1, 'include_children' => true]);
 
     <!-- Sección Subir Fotos y Videos Alessandro (para edit y admin) -->
     <?php if (isEdit() || isAdmin()): ?>
-    <div class="admin-section" id="subir-fotos-alessandro-section">
+    <div class="admin-section" id="subir-fotos-alessandro-section" style="display: none;">
         <h2>Gestionar Fotos y Videos Alessandro</h2>
         
         <!-- Subir archivos -->

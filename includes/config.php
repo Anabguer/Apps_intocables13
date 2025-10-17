@@ -43,11 +43,12 @@ define('REQUIRE_STRONG_PASSWORDS', 0);
 
 // Configuración de Notificaciones
 define('EMAIL_NOTIFICATIONS', 1);
+// Configuración SMTP para Hostalia
 define('SMTP_SERVER', 'smtp.colisan.com');
 define('SMTP_PORT', 587);
 define('SMTP_USERNAME', 'info@colisan.com');
 define('SMTP_PASSWORD', 'IgdAmg19521954');
-define('FROM_EMAIL', 'info@intocables.com');
+define('FROM_EMAIL', 'noreply@intocables13.com');
 define('FROM_NAME', 'INTOCABLES');
 
 // Configuración de Galería

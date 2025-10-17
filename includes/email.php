@@ -1,8 +1,16 @@
 <?php
 require_once __DIR__ . '/config.php';
 
+// Incluir PHPMailer
+require_once __DIR__ . '/../PHPMailer/Exception.php';
+require_once __DIR__ . '/../PHPMailer/PHPMailer.php';
+require_once __DIR__ . '/../PHPMailer/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 /**
- * Clase simple para envío de correos
+ * Clase mejorada para envío de correos usando PHPMailer
  */
 class SimpleMailer {
     private $smtp_server;
@@ -22,52 +30,75 @@ class SimpleMailer {
     }
     
     /**
-     * Enviar correo usando mail() de PHP
+     * Enviar correo usando PHPMailer con SMTP
      */
     public function sendMail($to, $subject, $message, $isHTML = true) {
-        // Si no hay configuración SMTP completa, usar mail() básico
+        // Si no hay configuración SMTP completa, usar modo desarrollo
         if (empty($this->smtp_server) || empty($this->smtp_username) || empty($this->smtp_password)) {
-            return $this->sendBasicMail($to, $subject, $message, $isHTML);
+            error_log("SIMULACIÓN DE CORREO - Para: $to, Asunto: $subject");
+            return true; // Simular éxito para desarrollo
         }
         
-        // Si hay configuración SMTP completa, usar PHPMailer
+        // Usar PHPMailer para envío real
         return $this->sendSMTPMail($to, $subject, $message, $isHTML);
     }
     
     /**
-     * Envío básico usando mail() de PHP
-     */
-    private function sendBasicMail($to, $subject, $message, $isHTML) {
-        // En XAMPP, mail() puede fallar si no hay servidor SMTP configurado
-        // Simular el envío exitoso para desarrollo cuando no hay SMTP configurado
-        if (empty($this->smtp_password)) {
-            // No hay contraseña SMTP configurada, simular envío exitoso
-            error_log("SIMULACIÓN DE CORREO - Para: $to, Asunto: $subject");
-            return true;
-        }
-        
-        $headers = "From: {$this->from_name} <{$this->from_email}>\r\n";
-        $headers .= "Reply-To: {$this->from_email}\r\n";
-        $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
-        
-        if ($isHTML) {
-            $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-        } else {
-            $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-        }
-        
-        return mail($to, $subject, $message, $headers);
-    }
-    
-    /**
-     * Envío usando SMTP (requiere configuración)
+     * Envío usando PHPMailer con SMTP
      */
     private function sendSMTPMail($to, $subject, $message, $isHTML) {
-        // Implementación básica de SMTP
-        // En un entorno real, se usaría PHPMailer o similar
+        $mail = new PHPMailer(true);
         
-        // Por ahora, usar mail() básico pero con headers mejorados
-        return $this->sendBasicMail($to, $subject, $message, $isHTML);
+        try {
+            // Configuración SSL para Hostalia (como en tu código anterior)
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+            
+            // Configuración del servidor SMTP
+            $mail->isSMTP();
+            $mail->Host = $this->smtp_server;
+            $mail->SMTPAuth = true;
+            $mail->Username = $this->smtp_username;
+            $mail->Password = $this->smtp_password;
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = $this->smtp_port;
+            
+            // Configuración de remitente
+            $mail->setFrom($this->from_email, $this->from_name);
+            $mail->addReplyTo($this->from_email, $this->from_name);
+            $mail->addAddress($to);
+            
+            // Configuración del correo
+            $mail->isHTML($isHTML);
+            $mail->Subject = $subject;
+            $mail->Body = $message;
+            $mail->CharSet = 'UTF-8';
+            
+            // Texto alternativo para clientes que no soportan HTML
+            if ($isHTML) {
+                $mail->AltBody = strip_tags($message);
+            }
+            
+            // Enviar correo
+            $result = $mail->send();
+            
+            if ($result) {
+                error_log("CORREO ENVIADO EXITOSAMENTE - Para: $to, Asunto: $subject");
+                return true;
+            } else {
+                error_log("ERROR AL ENVIAR CORREO - Para: $to, Asunto: $subject");
+                return false;
+            }
+            
+        } catch (Exception $e) {
+            error_log("ERROR PHPMailer - Para: $to, Asunto: $subject, Error: " . $e->getMessage());
+            return false;
+        }
     }
     
     /**
@@ -183,7 +214,7 @@ class SimpleMailer {
                 <p>Si tienes problemas, contacta con el administrador del sistema.</p>
                 
                 <div class='footer'>
-                    <p>Este es un correo automático, por favor no respondas a este mensaje.</p>
+                    <p>Este es un correo automático. <strong>No respondas a este mensaje</strong> - las respuestas no serán procesadas.</p>
                     <p>&copy; " . date('Y') . " {$siteName} - Todos los derechos reservados</p>
                 </div>
             </div>
@@ -191,6 +222,54 @@ class SimpleMailer {
         </html>";
         
         return $html;
+    }
+    
+    /**
+     * Método para probar la configuración SMTP
+     */
+    public function testSMTPConnection() {
+        if (empty($this->smtp_server) || empty($this->smtp_username) || empty($this->smtp_password)) {
+            return [
+                'success' => false,
+                'message' => 'Configuración SMTP incompleta'
+            ];
+        }
+        
+        $mail = new PHPMailer(true);
+        
+        try {
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+            
+            $mail->isSMTP();
+            $mail->Host = $this->smtp_server;
+            $mail->SMTPAuth = true;
+            $mail->Username = $this->smtp_username;
+            $mail->Password = $this->smtp_password;
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = $this->smtp_port;
+            $mail->SMTPDebug = 0; // Sin debug para la prueba
+            
+            // Intentar conectar
+            $mail->smtpConnect();
+            $mail->smtpClose();
+            
+            return [
+                'success' => true,
+                'message' => 'Conexión SMTP exitosa'
+            ];
+            
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => 'Error de conexión SMTP: ' . $e->getMessage()
+            ];
+        }
     }
 }
 
@@ -204,5 +283,13 @@ function sendVerificationEmail($email, $userName, $verificationCode) {
     $message = $mailer->createVerificationEmail($userName, $verificationCode);
     
     return $mailer->sendMail($email, $subject, $message, true);
+}
+
+/**
+ * Función para probar la configuración de correos
+ */
+function testEmailConfiguration() {
+    $mailer = new SimpleMailer();
+    return $mailer->testSMTPConnection();
 }
 ?>
